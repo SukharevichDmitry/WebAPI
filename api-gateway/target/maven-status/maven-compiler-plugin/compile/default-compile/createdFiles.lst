@@ -1,0 +1,17 @@
+org\example\controller\GatewayController.class
+org\example\dto\UserDTO.class
+org\example\dto\LibraryBookResponseDTO.class
+org\example\dto\BookResponseDTO.class
+org\example\ApiGatewayApplication.class
+org\example\controller\TokenHolder.class
+org\example\dto\BookRequestDTO.class
+org\example\dto\AuthResponseDTO$AuthResponseDTOBuilder.class
+org\example\dto\BookRequestDTO$BookRequestDTOBuilder.class
+org\example\client\LibraryServiceClient.class
+org\example\client\BookServiceClient.class
+org\example\dto\AuthResponseDTO.class
+org\example\dto\BookResponseDTO$BookResponseDTOBuilder.class
+org\example\client\AuthClient.class
+org\example\config\SecurityConfig.class
+org\example\dto\LibraryBookRequestDTO.class
+org\example\config\FeignClientConfig.class
