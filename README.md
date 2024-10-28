@@ -2,12 +2,12 @@
 This project contains three microservices: authservice, bookservice, and libraryservice, along with a PostgreSQL database.
 
 ## How to run
-You can run the entire project with this commands:
+#### You can run the entire project with this commands:
 ```HTML
 docker-compose build
 docker-compose up command
 ```
-Аnother option for starting the project is manually. You need to manually run each of the modules in the following order:
+#### Аnother option for starting the project is manually. You need to manually run each of the modules in the following order:
 * eureka-server
 * authservice, bookservice, libraryservice
 * api-gateway
