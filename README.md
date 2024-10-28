@@ -1,5 +1,5 @@
 # CRUD Library-Web-API
-This project contains three microservices: authservice, bookservice, and libraryservice, along with a PostgreSQL database.
+This project contains three microservices: authservice, bookservice, and libraryservice, along with a PostgreSQL database, eureka server and api-gateway.
 
 ## How to run
 #### You can run the entire project with this commands:
