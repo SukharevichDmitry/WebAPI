@@ -9,7 +9,7 @@ mvn clean package
 #### You can run the entire project with this commands:
 ```bash
 docker-compose build
-docker-compose up command
+docker-compose up
 ```
 #### Аnother option for starting the project is manually. You need to manually run each of the modules in the following order:
 * eureka-server
