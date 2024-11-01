@@ -2,8 +2,12 @@
 This project contains three microservices: authservice, bookservice, and libraryservice, along with a PostgreSQL database, eureka server and api-gateway.
 
 ## How to run
+#### The first thing you need to do is build an application. You can do this by running the following command:
+```bash
+mvn clean package
+```
 #### You can run the entire project with this commands:
-```HTML
+```bash
 docker-compose build
 docker-compose up command
 ```
