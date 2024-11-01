@@ -25,6 +25,11 @@
   <spring-cloud.version>3.1.0</spring-cloud.version>
   <gson.version>2.10.1</gson.version>
   <logback-classic.version>1.4.14</logback-classic.version>
+  <spring-cloud-dependencies.version>2022.0.4</spring-cloud-dependencies.version>
+  <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+  <jaxb-runtime.version>3.0.1</jaxb-runtime.version>
+  <jackson.version>2.15.0</jackson.version>
+  <junit.version>4.13.2</junit.version>
 </properties>
 
 <modules>
@@ -171,6 +176,7 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>${spring-boot.version}</version>
       </plugin>
+
     </plugins>
   </build>
 </project>

@@ -11,7 +11,6 @@
 
 
     <properties>
-        <logback-classic.version>1.4.14</logback-classic.version>
     </properties>
 
     <dependencies>
@@ -116,7 +115,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.10.1</version>
+            <version>${gson.version}</version>
         </dependency>
 
     </dependencies>
@@ -126,7 +125,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2022.0.4</version>
+                <version>${spring-cloud-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -154,15 +153,14 @@
                 </executions>
             </plugin>
 
-            <!-- Плагин для создания JAR с манифестом -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.example.BookServiceApplication</mainClass> <!-- Главный класс -->
+                            <mainClass>org.example.BookServiceApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
