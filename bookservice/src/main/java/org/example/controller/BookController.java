@@ -42,14 +42,16 @@ public class BookController {
     @PostMapping
     @Operation(summary = "Создать книгу", description = "Создаёт книгу с указанными параметрами.")
     @ResponseStatus(HttpStatus.CREATED) // Статус 201 для создания
-    public void createBook(@RequestBody BookRequestDTO bookRequestDTO) {
-        bookService.createBook(bookRequestDTO);
+    public ResponseEntity<BookResponseDTO> createBook(@RequestBody BookRequestDTO bookRequestDTO) {
+        BookResponseDTO bookResponseDTO = bookService.createBook(bookRequestDTO);
+        return ResponseEntity.ok(bookResponseDTO);
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Изменить книгу", description = "Изменяет параметры книги с указанным id на указанные")
-    public void updateBook(@PathVariable Long id, @RequestBody BookRequestDTO bookDetails) {
-        bookService.updateBook(id, bookDetails);
+    public  ResponseEntity<BookResponseDTO> updateBook(@PathVariable Long id, @RequestBody BookRequestDTO bookDetails) {
+        BookResponseDTO bookResponseDTO = bookService.updateBook(id, bookDetails);
+        return ResponseEntity.ok(bookResponseDTO);
     }
 
     @DeleteMapping("/{id}")

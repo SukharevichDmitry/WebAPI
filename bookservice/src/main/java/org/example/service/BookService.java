@@ -48,7 +48,7 @@ public class BookService {
     }
 
 
-    public void createBook(BookRequestDTO bookRequestDTO) {
+    public BookResponseDTO createBook(BookRequestDTO bookRequestDTO) {
         validateBookRequest(bookRequestDTO);
 
         Optional<Book> existingBook = bookRepository.findByIsbn(bookRequestDTO.getIsbn());
@@ -61,10 +61,12 @@ public class BookService {
 
         LibraryBookRequestDTO libraryBookRequestDTO = bookMapper.toLibraryRequestDTO(book);
         libraryServiceClient.sendBook(libraryBookRequestDTO);
+
+        return bookMapper.toResponseDTO(book);
     }
 
 
-    public void updateBook(Long id, BookRequestDTO bookDetails) {
+    public BookResponseDTO updateBook(Long id, BookRequestDTO bookDetails) {
         validateBookRequest(bookDetails);
 
         Book book = bookRepository.findById(id)
@@ -85,6 +87,8 @@ public class BookService {
 
         LibraryBookRequestDTO libraryBookRequestDTO = bookMapper.toLibraryRequestDTO(updatedBook);
         libraryServiceClient.sendBook(libraryBookRequestDTO);
+
+        return bookMapper.toResponseDTO(book);
     }
 
 
