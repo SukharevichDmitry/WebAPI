@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U test"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  eureka-server:
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka/
+      - DB_URL=jdbc:postgresql://postgres:5432/test
+      - DB_USERNAME=test
+      - DB_PASSWORD=test
+    build:
+      context: ./eureka-server
+    ports:
+      - "8761:8761"
+    depends_on:
+      - postgres
+
+  api-gateway:
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka/
+      - DB_URL=jdbc:postgresql://postgres:5432/test
+      - DB_USERNAME=test
+      - DB_PASSWORD=test
+      - BOOK_URL=http://bookservice:8081
+      - LIBRARY_URL=http://libraryservice:8082
+      - AUTH_URL=http://authservice:8083
+    build:
+      context: ./api-gateway
+    ports:
+      - "8084:8084"
+    depends_on:
+      - eureka-server
+      - postgres
+
+  authservice:
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka/
+      - DB_URL=jdbc:postgresql://postgres:5432/test
+      - DB_USERNAME=test
+      - DB_PASSWORD=test
+    build:
+      context: ./authservice
+    ports:
+      - "8083:8083"
+    depends_on:
+      - eureka-server
+      - postgres
+
+  bookservice:
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka/
+      - DB_URL=jdbc:postgresql://postgres:5432/test
+      - DB_USERNAME=test
+      - DB_PASSWORD=test
+      - LIBRARY_URL=http://libraryservice:8082
+    build:
+      context: ./bookservice
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-server
+      - postgres
+
+  libraryservice:
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka/
+      - DB_URL=jdbc:postgresql://postgres:5432/test
+      - DB_USERNAME=test
+      - DB_PASSWORD=test
+      - BOOK_URL=http://bookservice:8081
+    build:
+      context: ./libraryservice
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+      - postgres
+
+volumes:
+  postgres_data:

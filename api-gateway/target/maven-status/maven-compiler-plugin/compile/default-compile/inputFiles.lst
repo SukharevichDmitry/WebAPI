@@ -1,0 +1,14 @@
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\dto\BookResponseDTO.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\client\BookServiceClient.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\ApiGatewayApplication.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\dto\LibraryBookRequestDTO.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\client\LibraryServiceClient.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\controller\TokenHolder.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\dto\BookRequestDTO.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\dto\UserDTO.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\controller\GatewayController.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\client\AuthClient.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\dto\LibraryBookResponseDTO.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\config\SecurityConfig.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\config\FeignClientConfig.java
+C:\Users\37529\IdeaProjects\WebAPI\api-gateway\src\main\java\org\example\dto\AuthResponseDTO.java
