@@ -2,6 +2,7 @@ package org.example.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -26,8 +27,9 @@ public class JwtUtil {
 
     public Claims extractAllClaims(String token) {
         try {
-            return Jwts.parser()
-                    .setSigningKey(SECRET_KEY.getBytes())
+            return Jwts.parserBuilder()
+                    .setSigningKey(Keys.hmacShaKeyFor(SECRET_KEY.getBytes()))
+                    .build()
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
