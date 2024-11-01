@@ -2,6 +2,7 @@ package org.example.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.example.dto.BookRequestDTO;
+import org.example.dto.BooksResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,9 @@ public class BookController {
 
     @GetMapping
     @Operation(summary = "Получить все книги", description = "Возвращает список всех книг.")
-    public List<BookResponseDTO> getAllBooks() {
-        return bookService.getAllBooks();
+    public ResponseEntity<BooksResponseDTO> getAllBooks() {
+        BooksResponseDTO response = bookService.getAllBooks();
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")

@@ -3,6 +3,7 @@ package org.example.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import org.example.dto.LibraryBookRequestDTO;
 import org.example.dto.LibraryBookResponseDTO;
+import org.example.dto.LibraryBooksResponseDTO;
 import org.example.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +21,9 @@ public class LibraryController {
 
     @GetMapping("/books")
     @Operation(summary = "Получить все книги", description = "Возвращает список всех книг.")
-    public List<LibraryBookResponseDTO> getAllBooks() {
-        return libraryService.getAllBooks();
+    public ResponseEntity<LibraryBooksResponseDTO> getAllBooks() {
+        LibraryBooksResponseDTO response = libraryService.getAllBooks();
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/books/{id}")

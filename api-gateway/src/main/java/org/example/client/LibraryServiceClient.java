@@ -3,6 +3,7 @@ package org.example.client;
 import org.example.config.FeignClientConfig;
 import org.example.dto.LibraryBookRequestDTO;
 import org.example.dto.LibraryBookResponseDTO;
+import org.example.dto.LibraryBooksResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +15,13 @@ import java.util.List;
 public interface LibraryServiceClient {
 
     @PostMapping("/library/add")
-    LibraryBookResponseDTO createBook(@RequestBody LibraryBookRequestDTO libraryBookRequestDTO);
+    ResponseEntity<LibraryBookResponseDTO> createBook(@RequestBody LibraryBookRequestDTO libraryBookRequestDTO);
 
     @DeleteMapping("/library/books/{id}")
     void deleteBook(@PathVariable("id") Long id);
 
     @GetMapping("/library/books")
-    List<LibraryBookResponseDTO> getAllBooks();
+    LibraryBooksResponseDTO getAllBooks();
 
     @GetMapping("/library/books/{id}")
     LibraryBookResponseDTO getBook(@PathVariable("id") Long id);

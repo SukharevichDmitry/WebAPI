@@ -10,15 +10,10 @@ import lombok.*;
 public class BookResponseDTO {
 
     private Long id;
-
     private String title;
-
     private String author;
-
     private String isbn;
-
     private String genre;
-
     private String description;
 
 }

@@ -5,13 +5,19 @@ import org.example.dto.*;
 import org.example.client.BookServiceClient;
 import org.example.client.LibraryServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class GatewayController {
+    private static final Logger log = LoggerFactory.getLogger(GatewayController.class);
+
 
     @Autowired
     private BookServiceClient bookServiceClient;
@@ -26,7 +32,7 @@ public class GatewayController {
     private TokenHolder tokenHolder;
 
     @GetMapping("/books")
-    public List<BookResponseDTO> getAllBooks() {
+    public ResponseEntity<BooksResponseDTO> getAllBooks() {
         return bookServiceClient.getAllBooks();
     }
 
@@ -56,12 +62,12 @@ public class GatewayController {
     }
 
     @GetMapping("/library/books")
-    public List<LibraryBookResponseDTO> getAllLibraryBooks() {
+    public LibraryBooksResponseDTO getAllLibraryBooks() {
         return libraryServiceClient.getAllBooks();
     }
 
     @PostMapping("/library/add")
-    public LibraryBookResponseDTO addLibraryBook(@RequestBody LibraryBookRequestDTO libraryBookRequestDTO) {
+    public ResponseEntity<LibraryBookResponseDTO> addLibraryBook(@RequestBody LibraryBookRequestDTO libraryBookRequestDTO) {
         return libraryServiceClient.createBook(libraryBookRequestDTO);
     }
 
@@ -94,7 +100,7 @@ public class GatewayController {
     public ResponseEntity<AuthResponseDTO> login(@RequestBody UserDTO userDTO) {
         ResponseEntity<AuthResponseDTO> response = authClient.login(userDTO);
         if (response.getStatusCode().is2xxSuccessful()) {
-            String token = response.getBody().getToken();
+            String token = Objects.requireNonNull(response.getBody()).getToken();
             tokenHolder.setToken(token);
         }
         return response;

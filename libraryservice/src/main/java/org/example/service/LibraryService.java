@@ -4,6 +4,7 @@ import org.example.client.BookServiceClient;
 import org.example.dto.BookResponseDTO;
 import org.example.dto.LibraryBookRequestDTO;
 import org.example.dto.LibraryBookResponseDTO;
+import org.example.dto.LibraryBooksResponseDTO;
 import org.example.entity.LibraryBook;
 import org.example.exception.LibraryBookNotFoundException;
 import org.example.mapper.LibraryBookMapper;
@@ -29,9 +30,12 @@ public class LibraryService {
     @Lazy
     private BookServiceClient bookServiceClient;
 
-    public List<LibraryBookResponseDTO> getAllBooks() {
-        List<LibraryBook> books = libraryBookRepository.findAll();
-        return libraryBookMapper.toResponseDTOList(books);
+    public LibraryBooksResponseDTO getAllBooks() {
+        List<LibraryBookResponseDTO> bookResponseDTOS = libraryBookRepository.findAll().stream()
+                .map(libraryBookMapper::toResponseDTO)
+                .collect(Collectors.toList());
+
+        return new LibraryBooksResponseDTO(bookResponseDTOS);
     }
 
     public LibraryBookResponseDTO getBookById(Long id) {

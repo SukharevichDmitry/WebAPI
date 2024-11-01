@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.client.LibraryServiceClient;
+import org.example.dto.BooksResponseDTO;
 import org.example.dto.LibraryBookRequestDTO;
 import org.example.dto.BookRequestDTO;
 import org.example.dto.BookResponseDTO;
@@ -31,10 +32,11 @@ public class BookService {
     private LibraryServiceClient libraryServiceClient;
 
 
-    public List<BookResponseDTO> getAllBooks() {
-        return bookRepository.findAll().stream()
+    public BooksResponseDTO getAllBooks() {
+        List<BookResponseDTO> books = bookRepository.findAll().stream()
                 .map(bookMapper::toResponseDTO)
-                .collect(Collectors.toList());
+                .toList();
+        return new BooksResponseDTO(books);
     }
 
     public BookResponseDTO getBookById(Long id) {

@@ -3,6 +3,7 @@ package org.example.client;
 import org.example.config.FeignClientConfig;
 import org.example.dto.BookResponseDTO;
 import org.example.dto.BookRequestDTO;
+import org.example.dto.BooksResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public interface BookServiceClient {
     ResponseEntity<BookResponseDTO> getBookById(@PathVariable("id") Long id);
 
     @GetMapping("/books")
-    List<BookResponseDTO> getAllBooks();
+    ResponseEntity<BooksResponseDTO> getAllBooks();
 
     @PostMapping("/books")
     ResponseEntity<BookResponseDTO> createBook(BookRequestDTO bookRequestDTO);

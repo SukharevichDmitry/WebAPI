@@ -30,6 +30,7 @@
   <jaxb-runtime.version>3.0.1</jaxb-runtime.version>
   <jackson.version>2.15.0</jackson.version>
   <junit.version>4.13.2</junit.version>
+  <jackson.version>2.15.4</jackson.version>
 </properties>
 
 <modules>
@@ -163,6 +164,16 @@
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-gateway</artifactId>
     <version>${spring-cloud.version}</version>
+  </dependency>
+  <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>${jackson.version}</version>
+  </dependency>
+  <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-annotations</artifactId>
+    <version>${jackson.version}</version>
   </dependency>
 
 
