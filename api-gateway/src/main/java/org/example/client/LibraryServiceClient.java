@@ -14,7 +14,7 @@ import java.util.List;
 public interface LibraryServiceClient {
 
     @PostMapping("/library/add")
-    void createBook(@RequestBody LibraryBookRequestDTO libraryBookRequestDTO);
+    LibraryBookResponseDTO createBook(@RequestBody LibraryBookRequestDTO libraryBookRequestDTO);
 
     @DeleteMapping("/library/books/{id}")
     void deleteBook(@PathVariable("id") Long id);
@@ -29,7 +29,7 @@ public interface LibraryServiceClient {
     ResponseEntity<List<LibraryBookResponseDTO>> getAvailableBooks();
 
     @PutMapping("/library/books/{id}")
-    void updateBook(@PathVariable("id") Long id, @RequestBody LibraryBookRequestDTO libraryBookRequestDTO);
+    LibraryBookResponseDTO updateBook(@PathVariable("id") Long id, @RequestBody LibraryBookRequestDTO libraryBookRequestDTO);
 
 
 
