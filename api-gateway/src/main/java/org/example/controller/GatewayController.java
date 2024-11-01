@@ -41,13 +41,13 @@ public class GatewayController {
     }
 
     @PostMapping("/books")
-    public void createBook(@RequestBody BookRequestDTO bookRequestDTO) {
-        bookServiceClient.createBook(bookRequestDTO);
+    public ResponseEntity<BookResponseDTO> createBook(@RequestBody BookRequestDTO bookRequestDTO) {
+        return bookServiceClient.createBook(bookRequestDTO);
     }
 
     @PutMapping("/books/{id}")
-    public void updateBook(@PathVariable Long id, @RequestBody BookRequestDTO bookRequestDTO) {
-        bookServiceClient.updateBook(id, bookRequestDTO);
+    public ResponseEntity<BookResponseDTO> updateBook(@PathVariable Long id, @RequestBody BookRequestDTO bookRequestDTO) {
+        return bookServiceClient.updateBook(id, bookRequestDTO);
     }
 
     @DeleteMapping("/books/{id}")

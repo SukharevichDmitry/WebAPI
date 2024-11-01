@@ -18,13 +18,13 @@ public interface BookServiceClient {
     List<BookResponseDTO> getAllBooks();
 
     @PostMapping("/books")
-    void createBook(BookRequestDTO bookRequestDTO);
+    ResponseEntity<BookResponseDTO> createBook(BookRequestDTO bookRequestDTO);
 
     @GetMapping("/books/isbn/{isbn}")
     ResponseEntity<BookResponseDTO> getBookByIsbn(@PathVariable("isbn") String isbn);
 
     @PutMapping("/books/{id}")
-    void updateBook(@PathVariable("id") Long id, BookRequestDTO bookRequestDTO);
+    ResponseEntity<BookResponseDTO> updateBook(@PathVariable("id") Long id, BookRequestDTO bookRequestDTO);
 
     @DeleteMapping("/books/{id}")
     void deleteBook(@PathVariable("id") Long id);
