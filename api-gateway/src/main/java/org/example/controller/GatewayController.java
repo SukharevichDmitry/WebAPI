@@ -61,8 +61,8 @@ public class GatewayController {
     }
 
     @PostMapping("/library/add")
-    public void addLibraryBook(@RequestBody LibraryBookRequestDTO libraryBookRequestDTO) {
-        libraryServiceClient.createBook(libraryBookRequestDTO);
+    public LibraryBookResponseDTO addLibraryBook(@RequestBody LibraryBookRequestDTO libraryBookRequestDTO) {
+        return libraryServiceClient.createBook(libraryBookRequestDTO);
     }
 
     @DeleteMapping("/library/books/{id}")
@@ -81,8 +81,8 @@ public class GatewayController {
     }
 
     @PutMapping("/library/books/{id}")
-    public void updateLibraryBook(@PathVariable Long id, @RequestBody LibraryBookRequestDTO libraryBookRequestDTO) {
-        libraryServiceClient.updateBook(id, libraryBookRequestDTO);
+    public LibraryBookResponseDTO updateLibraryBook(@PathVariable Long id, @RequestBody LibraryBookRequestDTO libraryBookRequestDTO) {
+        return libraryServiceClient.updateBook(id, libraryBookRequestDTO);
     }
 
     @PostMapping("/auth/register")
