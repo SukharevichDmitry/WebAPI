@@ -87,6 +87,9 @@ public class LibraryService {
     }
 
     public void deleteBook(Long id) {
+        if (!libraryBookRepository.existsById(id)) {
+            throw new LibraryBookNotFoundException(id);
+        }
         libraryBookRepository.deleteById(id);
     }
 }
