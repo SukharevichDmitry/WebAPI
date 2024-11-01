@@ -39,8 +39,8 @@ public class LibraryController {
     @PostMapping("/add")
     @Operation(summary = "Создать книгу", description = "Создаёт книгу с указанными параметрами.")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createBook(@RequestBody LibraryBookRequestDTO libraryBookRequestDTO) {
-        libraryService.createBook(libraryBookRequestDTO);
+    public LibraryBookResponseDTO createBook(@RequestBody LibraryBookRequestDTO libraryBookRequestDTO) {
+        return libraryService.createBook(libraryBookRequestDTO);
     }
 
     @PutMapping("/books/{id}")

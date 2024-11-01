@@ -70,9 +70,9 @@ public class LibraryService {
         return libraryBookResponseDTO;
     }
 
-    public void createBook(LibraryBookRequestDTO libraryBookRequestDTO) {  // Изменение возвращаемого типа
+    public LibraryBookResponseDTO createBook(LibraryBookRequestDTO libraryBookRequestDTO) {  // Изменение возвращаемого типа
         LibraryBook libraryBook = libraryBookMapper.toEntity(libraryBookRequestDTO);
-        libraryBookRepository.save(libraryBook);
+        return libraryBookMapper.toResponseDTO(libraryBookRepository.save(libraryBook));
     }
 
     public LibraryBookResponseDTO updateBook(Long id, LibraryBookRequestDTO libraryBookRequestDTO) {
