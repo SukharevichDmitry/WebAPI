@@ -7,7 +7,7 @@ This project contains three microservices: authservice, bookservice, and library
 mvn clean package
 ```
 #### You can run the entire project with this commands:
-```HTML
+```bash
 docker-compose build
 docker-compose up command
 ```
