@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "bookservice", url = "${feign.client.book.url}", configuration = FeignClientConfig.class)
+@FeignClient(name = "bookservice", configuration = FeignClientConfig.class)
 public interface BookServiceClient {
     @GetMapping("/books/{id}")
     ResponseEntity<BookResponseDTO> getBookById(@PathVariable("id") Long id);

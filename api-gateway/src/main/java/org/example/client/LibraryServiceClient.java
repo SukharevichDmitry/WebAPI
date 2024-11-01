@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@FeignClient(name = "libraryservice", url = "${feign.client.library.url}", configuration = FeignClientConfig.class)
+@FeignClient(name = "libraryservice", configuration = FeignClientConfig.class)
 public interface LibraryServiceClient {
 
     @PostMapping("/library/add")

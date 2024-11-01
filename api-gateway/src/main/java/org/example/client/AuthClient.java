@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "authservice", url = "${feign.client.auth.url}")
+@FeignClient(name = "authservice")
 public interface AuthClient {
 
     @PostMapping("/auth/register")
